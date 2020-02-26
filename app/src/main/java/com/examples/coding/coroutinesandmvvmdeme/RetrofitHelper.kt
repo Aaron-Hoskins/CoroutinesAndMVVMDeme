@@ -1,9 +1,9 @@
 package com.examples.coding.rxjavademo.datasource.remote.retrofit
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL_CHUCK_NORRIS = "https://api.icndb.com/"
@@ -15,7 +15,7 @@ object RetrofitHelper {
             .client(getClient())
             .baseUrl(BASE_URL_CHUCK_NORRIS)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
 
